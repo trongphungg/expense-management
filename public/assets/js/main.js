@@ -43,7 +43,6 @@ function clearExpenseForm() {
     document.getElementById('price').value = '';
     document.getElementById('name').value = '';
     document.getElementById('date').value = '';
-    document.getElementById('note').value = '';
     document.getElementById('id').value = '';
 }
 
@@ -51,22 +50,21 @@ function addExpense() {
     let price = document.getElementById('price').value;
     let name = document.getElementById('name').value;
     let date = document.getElementById('date').value;
-    let note = document.getElementById('note').value;
     let id = document.getElementById('id').value;
     
     if (price && date) {
-        addExpenseToList(price, name, date, note);
+        addExpenseToList(price, name, date);
         updateTotalAmount(price);
         addCart(id,name,date,price);
         clearExpenseForm();
     }
 }
 
-function addExpenseToList(price, name, date, note) {
+function addExpenseToList(price, name, date) {
     let expenseList = document.getElementById('expenseList');
     let listItem = document.createElement('li');
     listItem.className = 'list-group-item';
-    listItem.innerHTML = ` ${name} - ${date} - ${note} - <strong>${price} VNĐ</strong>`;
+    listItem.innerHTML = ` ${name} - ${date} - <strong>${price} VNĐ</strong>`;
     expenseList.appendChild(listItem);
 }
 

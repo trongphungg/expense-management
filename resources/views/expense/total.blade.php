@@ -1,8 +1,13 @@
 @extends('layout.app')
 
 @section('content')
-
-<div>
+    <table class="table">
+      <thead>
+        <td>Hello</td>
+        <td>Toi ten la</td>
+        <td>Nguyen Trong Phung</td>
+      </thead>
+    </table>
     <h1 style="padding-top: 25px">Chi phí bắt buộc</h1>
     <table class="table table-striped table-hover">
         <thead>
@@ -17,15 +22,13 @@
           <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$a->name}}</td>
-            <td>{{$a->price}}</td>
+            <td>{{$a->price}} $</td>
           </tr>
         @endforeach
         </tbody>
       </table>
-</div>
-<div>
-    <h1>Chi tiêu trong tháng</h1>
-    <table class="table table-striped table-hover rounded-table ">
+      <h1>Chi tiêu trong tháng</h1>
+    <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">STT</th>
@@ -42,7 +45,7 @@
             <td>{{$a->name}}</td>
             <td>{{$a->user->name}}</td>
             <td>{{$a->date}}</td>
-            <td>{{$a->price}}</td>
+            <td>{{$a->price}} $</td>
           </tr>
         @endforeach
           <tr>
@@ -57,12 +60,13 @@
   
               echo $tongtien;
   
-          @endphp</td>
+          @endphp $</td>
           </tr>
         </tbody>
       </table>
       @if($user->id == 2)
-        <a href="{{route('tattoan')}}" class="btn-TT btn btn-info">Tất toán</a>
-      @endif
-</div>
+    <div class="text-end mt-3">
+        <a href="{{ route('tattoan') }}" class="btn btn-info">Tất toán</a>
+    </div>
+@endif
 @endsection

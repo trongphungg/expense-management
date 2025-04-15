@@ -18,7 +18,7 @@
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$a->name}}</td>
             <td>{{$a->date}}</td>
-            <td>{{$a->price}}</td>
+            <td>{{$a->price}} $</td>
           </tr>
         @endforeach
         <tr>
@@ -29,7 +29,7 @@
                   $tongtien +=$a->price;
               echo $tongtien;
   
-          @endphp</td>
+          @endphp $</td>
           </tr>
         </tbody>
       </table>
