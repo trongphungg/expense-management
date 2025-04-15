@@ -14,8 +14,8 @@ Route::get('/create/{id}',[DetailController::class,'index'])
 
 Route::post('/handlecreate',[DetailController::class,'handlecreate']);
 
-Route::get('/total',[TotalController::class,'index'])
+Route::get('/total/{id}',[TotalController::class,'index'])
 ->name('tongchitieu');
 
-Route::get('/history',[HistoryController::class,'index'])
+Route::get('/history/{id}',[HistoryController::class,'index'])
 ->name('lichsu');

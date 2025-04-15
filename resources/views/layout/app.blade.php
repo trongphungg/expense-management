@@ -22,10 +22,13 @@
                     <a class="nav-link" href="{{route('trangchu')}}">Trang Chủ</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Lịch sử chi tiêu {{$user->id}}</a>
+                    <a class="nav-link" href="{{route('dangnhap',$user->id)}}">Thêm chi tiêu</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('tongchitieu')}}">Tổng chi tiêu</a>
+                    <a class="nav-link" href="{{route('lichsu',$user->id)}}">Lịch sử chi tiêu</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('tongchitieu',$user->id)}}">Tổng chi tiêu</a>
                   </li>
               </div>
             </div>

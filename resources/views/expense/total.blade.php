@@ -1,9 +1,10 @@
 @extends('layout.app')
 
 @section('content')
+
 <div>
-    <h1>Chi phí bắt buộc</h1>
-    <table class="table">
+    <h1 style="padding-top: 25px">Chi phí bắt buộc</h1>
+    <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">STT</th>
@@ -24,14 +25,14 @@
 </div>
 <div>
     <h1>Chi tiêu trong tháng</h1>
-    <table class="table">
+    <table class="table table-striped table-hover rounded-table ">
         <thead>
           <tr>
             <th scope="col">STT</th>
             <th scope="col">Tên</th>
-            <th scope="col">Giá tiền</th>
-            <th scope="col">Ngày mua</th>
             <th scope="col">Người mua</th>
+            <th scope="col">Ngày mua</th>
+            <th scope="col">Giá tiền</th>
           </tr>
         </thead>
         <tbody>
@@ -39,30 +40,27 @@
           <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$a->name}}</td>
-            <td>{{$a->price}}</td>
-            <td>{{$a->date}}</td>
             <td>{{$a->user->name}}</td>
+            <td>{{$a->date}}</td>
+            <td>{{$a->price}}</td>
           </tr>
         @endforeach
+          <tr>
+            <td colspan="4">Tổng chi tiêu trong tháng này: </td>
+            <td> @php
+              $tongtien =0;
+              foreach($data as $a)
+                  $tongtien +=$a->price;
+              foreach($expense as $b)
+                  $tongtien +=$b->price;
+  
+  
+              echo $tongtien;
+  
+          @endphp</td>
+          </tr>
         </tbody>
       </table>
-</div>
-
-
-<div>
-    <h3>Tổng chi tiêu trong tháng này 
-
-        @php
-            $tongtien =0;
-            foreach($data as $a)
-                $tongtien +=$a->price;
-            foreach($expense as $b)
-                $tongtien +=$b->price;
-
-
-            echo $tongtien;
-
-        @endphp
-    </h3>
+      <a href="" class="btn-TT btn btn-info">Tất toán</a>
 </div>
 @endsection
