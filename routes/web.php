@@ -19,3 +19,6 @@ Route::get('/total/{id}',[TotalController::class,'index'])
 
 Route::get('/history/{id}',[HistoryController::class,'index'])
 ->name('lichsu');
+
+Route::get('/finish',[TotalController::class,'finish'])
+->name('tattoan');

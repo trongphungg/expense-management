@@ -61,6 +61,8 @@
           </tr>
         </tbody>
       </table>
-      <a href="" class="btn-TT btn btn-info">Tất toán</a>
+      @if($user->id == 2)
+        <a href="{{route('tattoan')}}" class="btn-TT btn btn-info">Tất toán</a>
+      @endif
 </div>
 @endsection
