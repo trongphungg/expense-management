@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Quản lý Chi Tiêu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -46,18 +47,18 @@
         
         <!-- Form thêm chi tiêu -->
         <form id="expenseForm" class="mb-3">
-            <div class="mb-2">
-                <label for="amount" class="form-label">Số tiền</label>
-                <input type="number" class="form-control" id="amount" required>
-            </div>
+            <input type="text" id="id" hidden value="1">
             <div class="mb-2">
                 <label for="category" class="form-label">Danh mục</label>
-                <select class="form-select" id="category">
+                <select class="form-select" id="name">
                     <option value="Ăn uống">Ăn uống</option>
                     <option value="Mua sắm">Mua sắm</option>
                     <option value="Hóa đơn">Hóa đơn</option>
-                    <option value="Khác">Khác</option>
                 </select>
+            </div>
+            <div class="mb-2">
+                <label for="amount" class="form-label">Số tiền</label>
+                <input type="number" class="form-control" id="price" required>
             </div>
             <div class="mb-2">
                 <label for="date" class="form-label">Ngày tháng</label>
@@ -80,25 +81,7 @@
         </div>
     </div>
     
-    <script>
-        document.getElementById('expenseForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            let amount = document.getElementById('amount').value;
-            let category = document.getElementById('category').value;
-            let date = document.getElementById('date').value;
-            let note = document.getElementById('note').value;
-            
-            if (amount && date) {
-                let expenseList = document.getElementById('expenseList');
-                let listItem = document.createElement('li');
-                listItem.className = 'list-group-item';
-                listItem.innerHTML = `<strong>${amount} VNĐ</strong> - ${category} - ${date} - ${note}`;
-                expenseList.appendChild(listItem);
-                
-                let totalAmount = document.getElementById('totalAmount');
-                totalAmount.textContent = parseInt(totalAmount.textContent) + parseInt(amount);
-            }
-        });
+    <script src="{{asset('assets/js/main.js')}}">
     </script>
     
 </body>

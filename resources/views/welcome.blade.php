@@ -8,16 +8,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <a href="#">Trang Chủ</a>
+        <a href="#">Quản lý Chi Tiêu</a>
+    </div>
     <div class="container">
         <div class="grid-container">
             @if($data)
             @foreach($data as $a)
-            <a href="">
+            {{-- <a href=""> --}}
                 <div class="main-card">
                     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar" class="main-avatar">
                     <h5>{{$a->name}}</h5>
                 </div>
-            </a>
+            {{-- </a> --}}
             @endforeach
             @endif
         </div>
