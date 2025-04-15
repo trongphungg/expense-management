@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\detail;
+use App\Models\User;
 
 class DetailController extends Controller
 {
-    public function index(){
-        return view('expense.create');
+    public function index($id){
+        $user = User::where('id',$id)->first();
+        return view('expense.create',compact('user'));
     }
 
     public function handlecreate(Request $request){

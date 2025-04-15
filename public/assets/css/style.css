@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #ff9966, #ff5e62);
     color: white;
     display: flex;
     align-items: center;
@@ -13,6 +13,8 @@ body {
 .container {
     max-width: 90%;
 }
+
+
 
 .menu-icon {
     position: fixed;
@@ -63,6 +65,10 @@ body {
     right: 20px;
     font-size: 25px;
     cursor: pointer;
+}
+
+.navbar{
+    z-index: 9999;
 }
 
 .main-card {
@@ -128,3 +134,24 @@ body {
         opacity: 0;
     }
 }
+
+.navbar, .navbar-collapse{
+    border-radius: 20px;
+}
+
+.list-group{
+    padding-top: 20px ;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white; /* hoặc cùng màu với navbar */
+      z-index: 999;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  }

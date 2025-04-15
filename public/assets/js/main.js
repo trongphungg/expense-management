@@ -39,6 +39,14 @@ document.getElementById('expenseForm').addEventListener('submit', function(event
 
 });
 
+function clearExpenseForm() {
+    document.getElementById('price').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('note').value = '';
+    document.getElementById('id').value = '';
+}
+
 function addExpense() {
     let price = document.getElementById('price').value;
     let name = document.getElementById('name').value;
@@ -50,6 +58,7 @@ function addExpense() {
         addExpenseToList(price, name, date, note);
         updateTotalAmount(price);
         addCart(id,name,date,price);
+        clearExpenseForm();
     }
 }
 

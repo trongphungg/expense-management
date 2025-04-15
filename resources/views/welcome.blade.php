@@ -21,17 +21,18 @@
         <div class="grid-container">
             @if($data)
             @foreach($data as $a)
-            {{-- <a href=""> --}}
+                <a href="{{route('dangnhap',$a->id)}}" style="text-decoration: none">
                 <div class="main-card">
                     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar" class="main-avatar">
                     <h5>{{$a->name}}</h5>
                 </div>
-            {{-- </a> --}}
+            </a>
             @endforeach
             @endif
         </div>
     </div>
     <script src="{{asset('assets/js/main.js')}}">
     </script>
+    
 </body>
 </html>

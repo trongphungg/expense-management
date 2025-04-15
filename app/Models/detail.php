@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class detail extends Model
 {
     // protected $table = 'chitietdonhang';
@@ -17,4 +18,9 @@ class detail extends Model
         'date',
         'price',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id'); // 'id' là khóa chính của bảng Khachhang
+    }
 }
