@@ -1,8 +1,9 @@
 @extends('layout.app')
 
 @section('content')
-<div>
-    <h1 style="padding-top: 25px">Lịch sử chi tiêu</h1>
+<div class="container mt-4 overflow-auto" style="max-height: 90vh;">
+    <h2 style="padding-top: 25px">Xin chào, {{$user->name}} .
+      <br/>Dưới đây là lịch sử chi tiêu của bạn</h2>
     <table class="table">
         <thead>
           <tr>
@@ -10,6 +11,7 @@
             <th scope="col">Tên</th>
             <th scope="col">Ngày mua</th>
             <th scope="col">Giá tiền</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -17,13 +19,14 @@
           <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$a->name}}</td>
-            <td>{{$a->date}}</td>
+            <td>{{ \Carbon\Carbon::parse($a->date)->format('d/m/Y') }}</td>
             <td>{{$a->price}} $</td>
+            <td><a>Sửa</a><a>Xoá</a></td>
           </tr>
         @endforeach
         <tr>
             <td colspan="3">Tổng chi tiêu trong tháng này: </td>
-            <td> @php
+            <td colspan="2"> @php
               $tongtien =0;
               foreach($data as $a)
                   $tongtien +=$a->price;

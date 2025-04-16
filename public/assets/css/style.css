@@ -20,7 +20,11 @@ body {
     overflow: hidden;
 }
 
-
+.div-form{
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+}
 
 .menu-icon {
     position: fixed;

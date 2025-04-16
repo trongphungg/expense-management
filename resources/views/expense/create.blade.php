@@ -11,6 +11,20 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
+
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* cho phép cuộn dọc */
+    -webkit-overflow-scrolling: touch; /* mượt mà cho iOS */
+}
+
+.container {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
     h2 {
         text-align: center;
         font-weight: bold;
@@ -33,7 +47,7 @@
         height: 80px;
     }
 </style>
-<div class="container mt-4">
+<div class="container mt-4 overflow-auto" style="max-height: 90vh;">
     <img src="https://cdn-icons-png.flaticon.com/512/3050/3050525.png" alt="Expense Tracker" class="header-img">
     <h2>Quản lý Chi Tiêu</h2>
     
@@ -68,5 +82,7 @@
     <div class="mt-3">
         <h5>Tổng tiền: <span id="totalAmount">0</span> VNĐ</h5>
     </div>
+
+    
 </div>
 @endsection

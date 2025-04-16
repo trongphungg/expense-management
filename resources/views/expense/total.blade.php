@@ -1,6 +1,8 @@
 @extends('layout.app')
 
 @section('content')
+
+<div class="container mt-4 overflow-auto" style="max-height: 90vh; margin-bottom: 50px;">
     <h1 style="padding-top: 25px">Chi phí bắt buộc</h1>
     <table class="table table-striped table-hover">
         <thead>
@@ -20,8 +22,8 @@
         @endforeach
         </tbody>
       </table>
-      <h1>Chi tiêu trong tháng</h1>
-    <table class="table table-striped table-hover">
+    <h1>Chi tiêu trong tháng</h1>
+    <table class="table table-striped table-hover rounded-table ">
         <thead>
           <tr>
             <th scope="col">STT</th>
@@ -37,7 +39,7 @@
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$a->name}}</td>
             <td>{{$a->user->name}}</td>
-            <td>{{$a->date}}</td>
+            <td>{{ \Carbon\Carbon::parse($a->date)->format('d/m/Y') }}</td>
             <td>{{$a->price}} $</td>
           </tr>
         @endforeach
@@ -57,9 +59,11 @@
           </tr>
         </tbody>
       </table>
-      @if($user->id == 2)
+     @if($user->id == 2)
     <div class="text-end mt-3">
         <a href="{{ route('tattoan') }}" class="btn btn-info">Tất toán</a>
     </div>
 @endif
+
+</div>
 @endsection

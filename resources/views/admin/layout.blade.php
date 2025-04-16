@@ -12,23 +12,20 @@
     <div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="margin-top: 70px;">
             <div class="container-fluid">
-              <a class="navbar-brand">Quản lý chi tiêu</a>
+              <a class="navbar-brand">Quản trị viên</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('trangchu')}}">Trang Chủ</a>
+                    <a class="nav-link" href="{{route('dashboard')}}">Trang chủ</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('dangnhap',$user->id)}}">Thêm chi tiêu</a>
+                    <a class="nav-link" href="{{route('create')}}">Thêm thành viên</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('lichsu',$user->id)}}">Lịch sử chi tiêu</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('tongchitieu',$user->id)}}">Tổng chi tiêu</a>
+                    <a class="nav-link" href="{{route('createExpense')}}">Thêm chi phí mỗi tháng</a>
                   </li>
               </div>
             </div>
