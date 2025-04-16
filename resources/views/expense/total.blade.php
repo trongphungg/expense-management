@@ -1,13 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-    <table class="table">
-      <thead>
-        <td>Hello</td>
-        <td>Toi ten la</td>
-        <td>Nguyen Trong Phung</td>
-      </thead>
-    </table>
     <h1 style="padding-top: 25px">Chi phí bắt buộc</h1>
     <table class="table table-striped table-hover">
         <thead>
