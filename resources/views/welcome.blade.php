@@ -29,6 +29,7 @@
             </a>
             @endforeach
             @endif
+            
         </div>
     </div>
     <script src="{{asset('assets/js/main.js')}}">
