@@ -10,6 +10,7 @@
             <th scope="col">STT</th>
             <th scope="col">Tên</th>
             <th scope="col">Ngày mua</th>
+            <th scope="col">Ghi chú</th>
             <th scope="col">Giá tiền</th>
             <th></th>
           </tr>
@@ -20,12 +21,13 @@
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$a->name}}</td>
             <td>{{ \Carbon\Carbon::parse($a->date)->format('d/m/Y') }}</td>
+            <td>{{$a->note}}</td>
             <td>{{$a->price}} $</td>
-            <td><a>Sửa</a><a>Xoá</a></td>
+            <td><a>Xoá</a></td>
           </tr>
         @endforeach
         <tr>
-            <td colspan="3">Tổng chi tiêu trong tháng này: </td>
+            <td colspan="4">Tổng chi tiêu trong tháng này: </td>
             <td colspan="2"> @php
               $tongtien =0;
               foreach($data as $a)

@@ -24,6 +24,7 @@
                 <a href="{{route('dangnhap',$a->id)}}" style="text-decoration: none">
                 <div class="main-card">
                     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar" class="main-avatar">
+                    {{-- <img src="{{asset('assets/img/'.$a->image)}}" alt="Avatar" class="main-avatar"> --}}
                     <h5>{{$a->name}}</h5>
                 </div>
             </a>

@@ -20,11 +20,15 @@ class ThongBaoMail extends Mailable
      public $name;
      public $sotien;
      public $flag;
-    public function __construct($name,$sotien,$flag)
+     public $ctcn;
+     public $tbtien;
+    public function __construct($name,$sotien,$flag,$ctcn,$tbtien)
     {
         $this->name=$name;
         $this->sotien=$sotien;
         $this->flag=$flag;
+        $this->ctcn = $ctcn;
+        $this->tbtien = $tbtien;
     }
 
     /**

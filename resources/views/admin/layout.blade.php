@@ -27,6 +27,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('createExpense')}}">Thêm chi phí mỗi tháng</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('password')}}">Đổi mật khẩu</a>
+                  </li>
               </div>
             </div>
         </nav>

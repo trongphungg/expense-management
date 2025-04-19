@@ -70,7 +70,7 @@
             @csrf
             <div class="mb-3">
                 <label for="username" class="form-label">Tên đăng nhập</label>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập" required>
+                <input type="text" name="email" id="email" class="form-control" placeholder="Nhập tên đăng nhập" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mật khẩu</label>

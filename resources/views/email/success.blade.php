@@ -93,6 +93,10 @@
         <div class="message">
             Dựa vào phần mềm quản lý chi tiêu, chúng tôi muốn thông báo cho bạn:
             <br><br>
+            Số tiền bạn đã chi tiêu cho gia đình trong tháng này là: {{ number_format(abs($ctcn), 2) }} $;
+            <br/>
+            Số tiền trung bình mà mỗi thành viên cần đóng trong tháng này là: {{ number_format(abs($tbtien), 2) }} $;
+            <br/>
             @php
                 if($flag == -1)
                     echo "👉 <strong>Bạn cần đóng thêm tiền sinh hoạt.</strong>";

@@ -47,7 +47,6 @@ class TotalController extends Controller
     foreach ($dskh as $kh) {
     $ctcn = $tongChiTieuTheoUser[$kh->id] ?? 0;
     $sotien = $ctcn - $tbtien;
-    $sotien= ceil($sotien);
     $name = $kh->name;
 
     if ($sotien < 0) {
@@ -58,7 +57,7 @@ class TotalController extends Controller
         $flag = 0;
     }
 
-    Mail::to($kh->email)->send(new ThongBaoMail($name, $sotien, $flag));
+    Mail::to($kh->email)->send(new ThongBaoMail($name, $sotien, $flag,$ctcn,$tbtien));
 }
 
     DB::table('detail')->truncate();

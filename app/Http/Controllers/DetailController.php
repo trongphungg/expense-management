@@ -19,6 +19,7 @@ class DetailController extends Controller
         $detail->name = $request->input('name');
         $detail->date = $request->input('date');
         $detail->price = $request->input('price');
+        $detail->note = $request->input('note');
         $detail->save();
         return response()->json([
             'message' => 'Product added to cart!',

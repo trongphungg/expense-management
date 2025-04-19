@@ -71,6 +71,11 @@
             <label for="date" class="form-label">Ngày tháng</label>
             <input type="date" class="form-control" id="date" required>
         </div>
+
+        <div class="mb-2">
+            <label for="amount" class="form-label">Ghi chú</label>
+            <input type="text" class="form-control" id="note" required>
+        </div>
         <button type="submit" class="btn btn-primary w-100">Thêm Chi Tiêu</button>
     </form>
     

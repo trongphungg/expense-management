@@ -33,10 +33,11 @@ Route::get('/admin',[AdminController::class,'index'])
 Route::post('/login',[AdminController::class,'login'])
 ->name('login');
 
-Route::get('/dashboard',[AdminController::class,'dashboard'])
+
+Route::middleware([KiemTraDangNhap::class])->group(function() {
+    Route::get('/dashboard',[AdminController::class,'dashboard'])
 ->name('dashboard');
-
-
+    
 Route::get('/create',[AdminController::class,'create'])
 ->name('create');
 
@@ -48,3 +49,16 @@ Route::get('/createExpense',[AdminController::class,'createExpense'])
 
 Route::post('/createExpense/finish',[AdminController::class,'handleCreateExpense'])
 ->name('handleCreateExpense');
+
+Route::get('/changepassword',[AdminController::class,'changePassword'])
+->name('password');
+
+Route::post('/handleChangePass',[AdminController::class,'handleChangePass'])
+->name('handleChangePass');
+
+Route::get('/deleteUser/{id}',[AdminController::class,'handleDeleteUser'])
+->name('deleteUser');
+
+Route::get('/deleteExpense/{id}',[AdminController::class,'handleDeleteExpense'])
+->name('deleteExpense');
+});

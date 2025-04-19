@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\expense;
 use App\Models\User;
+use App\Models\detail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -14,16 +17,28 @@ class AdminController extends Controller
 
 
     public function login(Request $request){
-        if($request->username == "admin" && $request->password == "123"){
-            return redirect()->route('dashboard');
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->role == 1) {
+                return redirect('/dashboard'); 
+            } else {
+                return redirect('/');
+            }
         }
-        else return view('admin.login');
+        
     }
 
     public function dashboard(){
         $dskh = User::all();
         $cpbb = expense::all();
-        return view('admin.dashboard',compact('dskh','cpbb'));
+        $data = detail::all();
+        $expense = expense::all();
+        return view('admin.dashboard',compact('dskh','cpbb','data','expense'));
     }
 
     public function create(){
@@ -36,8 +51,10 @@ class AdminController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->image = $user->name .'.png';
+        $user->password = null;
+        $user->role = 0;
         $user->save();
-        return redirect()->route('createExpense');
+        return redirect()->route('create');
     }
 
     public function createExpense(){
@@ -51,5 +68,31 @@ class AdminController extends Controller
         $expense->price = $request->input('price');
         $expense->save();
         return redirect()->route('createExpense');
+    }
+
+    public function changePassword(){
+        $user = user::where('role',1)->first();
+        return view('admin.changePassword',compact('user'));
+    }
+
+
+    public function handleChangePass(Request $request){
+        $user = User::where('email', $request->email)
+        ->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect('/dashboard');
+    }
+
+    public function handleDeleteUser($id){
+        $user = user::where('id',$id);
+        $user->delete();
+        return redirect('/create');
+    }
+
+    public function handleDeleteExpense($id){
+        $expense = expense::where('id',$id);
+        $expense->delete();
+        return redirect('/createExpense');
     }
 }

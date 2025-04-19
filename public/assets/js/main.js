@@ -18,14 +18,14 @@ function showGrid() {
 }
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-async function addCart(id,name,date,price){
+async function addCart(id,name,date,price,note){
     const response = await fetch(`http://127.0.0.1:8000/handlecreate`, {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken,
         },
-        body: JSON.stringify({ id,name,date,price}),
+        body: JSON.stringify({ id,name,date,price,note}),
         mode: 'cors',
     });
     // const result = await response.json();
@@ -44,6 +44,7 @@ function clearExpenseForm() {
     document.getElementById('name').value = '';
     document.getElementById('date').value = '';
     document.getElementById('id').value = '';
+    document.getElementById('note').value = '';
 }
 
 function addExpense() {
@@ -51,20 +52,22 @@ function addExpense() {
     let name = document.getElementById('name').value;
     let date = document.getElementById('date').value;
     let id = document.getElementById('id').value;
+    let note = document.getElementById('note').value;
+    
     
     if (price && date) {
-        addExpenseToList(price, name, date);
+        addExpenseToList(price, name, date,note);
         updateTotalAmount(price);
-        addCart(id,name,date,price);
+        addCart(id,name,date,price,note);
         clearExpenseForm();
     }
 }
 
-function addExpenseToList(price, name, date) {
+function addExpenseToList(price, name, date,note) {
     let expenseList = document.getElementById('expenseList');
     let listItem = document.createElement('li');
     listItem.className = 'list-group-item';
-    listItem.innerHTML = ` ${name} - ${date} - <strong>${price} VNĐ</strong>`;
+    listItem.innerHTML = ` ${name} - ${date} - ${note} - <strong>${price} VNĐ</strong>`;
     expenseList.appendChild(listItem);
 }
 

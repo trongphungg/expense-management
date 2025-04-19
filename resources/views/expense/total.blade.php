@@ -59,11 +59,6 @@
           </tr>
         </tbody>
       </table>
-     @if($user->id == 2)
-    <div class="text-end mt-3">
-        <a href="{{ route('tattoan') }}" class="btn btn-info">Tất toán</a>
-    </div>
-@endif
 
 </div>
 @endsection
