@@ -13,4 +13,10 @@ class HistoryController extends Controller
         $data = detail::where('id_user',$id)->get();
         return view('expense.history',compact('user','data'));
     }
+
+    public function handleDeleteDetail($id){
+        $detail = detail::where('id',$id);
+        $detail->delete();
+        return redirect()->back();
+    }
 }

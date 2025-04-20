@@ -33,6 +33,8 @@ Route::get('/admin',[AdminController::class,'index'])
 Route::post('/login',[AdminController::class,'login'])
 ->name('login');
 
+Route::get('/deleteDetail/{id}',[HistoryController::class,'handleDeleteDetail'])
+->name('deleteDetail');
 
 Route::middleware([KiemTraDangNhap::class])->group(function() {
     Route::get('/dashboard',[AdminController::class,'dashboard'])
