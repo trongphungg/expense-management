@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="div-form container">
+  @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ $errors->first() }}
+    </div>
+@endif
   <h5>Thêm thành viên</h5>
 <form  action="{{route('handleCreate')}}" method="POST">
   @csrf

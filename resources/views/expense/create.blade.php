@@ -87,7 +87,7 @@
     <div class="mt-3">
         <h5>Tổng tiền: <span id="totalAmount">0</span> VNĐ</h5>
     </div>
-
+    
     
 </div>
 @endsection

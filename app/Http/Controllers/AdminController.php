@@ -21,16 +21,17 @@ class AdminController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
+       
 
         if (Auth::attempt($credentials)) {
             if (Auth::user()->role == 1) {
-                return redirect('/dashboard'); 
+                return redirect()->route('dashboard'); 
             } else {
                 return redirect('/');
             }
+            dd($credentials);
         }
-        
+        return redirect()->back();
     }
 
     public function dashboard(){
@@ -47,14 +48,19 @@ class AdminController extends Controller
     }
 
     public function handleCreate(Request $request){
-        $user = new User();
+        try{
+            $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->image = $user->name .'.png';
         $user->password = null;
         $user->role = 0;
         $user->save();
-        return redirect()->route('create');
+        return redirect()->route('create')->with('success', 'Tạo người dùng thành công!');
+        }catch(QueryException $e){
+            return redirect()->back()
+            ->with('error','Đã có lỗi xảy ra khi tạo người dùng!');
+        }
     }
 
     public function createExpense(){
