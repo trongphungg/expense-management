@@ -65,13 +65,15 @@ class AdminController extends Controller
 
     public function createExpense(){
         $cpbb = expense::all();
-        return view('admin.createExpense',compact('cpbb'));
+        $users = User::all();
+        return view('admin.createExpense',compact('cpbb','users'));
     }
 
     public function handleCreateExpense(Request $request){
         $expense = new expense();
         $expense->name = $request->input('name');
         $expense->price = $request->input('price');
+        $expense->id_user=$request->input('idUser');
         $expense->save();
         return redirect()->route('createExpense');
     }

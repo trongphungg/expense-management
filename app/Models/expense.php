@@ -14,4 +14,9 @@ class expense extends Model
         'name',
         'price',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id'); // 'id' là khóa chính của bảng Khachhang
+    }
 }

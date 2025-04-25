@@ -77,7 +77,7 @@
   <script>
     // Optional: Chuyển hướng sau 3 giây
     setTimeout(() => {
-      window.location.href = "/";
+      window.location.href = "/dashboard";
     }, 5000);
   </script>
 </body>

@@ -28,6 +28,7 @@
           <tr>
             <th scope="col">STT</th>
             <th scope="col">Tên</th>
+            <th>Người mua</th>
             <th scope="col">Giá tiền</th>
           </tr>
         </thead>
@@ -36,11 +37,12 @@
           <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$a->name}}</td>
+            <td>{{$a->user->name}}</td>
             <td>{{$a->price}} $</td>
           </tr>
         @endforeach
           <tr>
-            <td colspan="2">Tổng chi phí bắt buộc</td>
+            <td colspan="3">Tổng chi phí bắt buộc</td>
             <td>@php
               $tcp = 0;
               foreach($cpbb as $b)

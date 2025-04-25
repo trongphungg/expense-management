@@ -42,6 +42,12 @@ class TotalController extends Controller
     }
     $tongChiTieuTheoUser[$ct->id_user] += $ct->price;
 }
+    foreach ($dscp as $cp) {
+    if (!isset($tongChiTieuTheoUser[$cp->id_user])) {
+        $tongChiTieuTheoUser[$cp->id_user] = 0;
+    }
+    $tongChiTieuTheoUser[$cp->id_user] += $cp->price;
+}
 
 // Bước 2: Gửi mail cho từng khách hàng
     foreach ($dskh as $kh) {

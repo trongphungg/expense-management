@@ -14,6 +14,12 @@
         <label for="exampleInputPassword1" class="form-label">Giá tiền</label>
         <input type="text" class="form-control" name="price" id="price" required>
       </div>
+      <select class="form-select" name="idUser" id="idUser" required>
+        <option value="" disabled selected>-- Chọn người mua --</option>
+        @foreach($users as $user)
+          <option value="{{ $user->id }}">{{ $user->name }}</option>
+        @endforeach
+      </select>
     <button type="submit" class="btn btn-primary">Thêm</button>
   </form>
 
@@ -24,6 +30,7 @@
         <th scope="col">Tên</th>
         <th scope="col">Giá tiền</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +39,7 @@
         <th scope="row">{{$loop->iteration}}</th>
         <td>{{$a->name}}</td>
         <td>{{$a->price}} $</td>
+        <td>{{$a->user->name}}</td>
         <td><a href="{{route('deleteExpense',$a->id)}}" type="button" class="btn btn-outline-danger">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
@@ -42,6 +50,8 @@
     @endforeach
     </tbody>
 </table>
+</div>
+<div class="text-end mt-3" style="padding-bottom: 200px">
 </div>
 </div>
 @endsection
