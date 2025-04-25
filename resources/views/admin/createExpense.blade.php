@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
+<div class="container mt-4 overflow-auto" style="max-height: 90vh;">
 <div class="div-form container">
   <h5>Thêm chi phí</h5>
 <form  action="{{route('handleCreateExpense')}}" method="POST">
@@ -41,5 +42,6 @@
     @endforeach
     </tbody>
 </table>
+</div>
 </div>
 @endsection

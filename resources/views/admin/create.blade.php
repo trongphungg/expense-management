@@ -1,17 +1,23 @@
 @extends('admin.layout')
 
 @section('content')
-<div class="div-form container">
-  @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ $errors->first() }}
-    </div>
-@endif
+<div class="container mt-4 overflow-auto" style="max-height: 90vh;">
+  {{-- @if(session('success') || session('error'))
+  <div class="div-form container">
+      @if(session('success'))
+          <div class="alert alert-success">
+              {{ session('success') }}
+          </div>
+      @endif
+  
+      @if(session('error'))
+          <div class="alert alert-danger">
+              {{ $errors->first() }}
+          </div>
+      @endif
+  </div>
+  @endif --}}
+  <div class="div-form container">
   <h5>Thêm thành viên</h5>
 <form  action="{{route('handleCreate')}}" method="POST">
   @csrf
@@ -40,7 +46,8 @@
       <tr>
         <th scope="row">{{$loop->iteration}}</th>
         <td>{{$kh->name}}</td>
-        <td>{{$kh->email}}</td>
+        <td>{{$kh->email}} 
+        </td>
         <td><a href="{{route('deleteUser',$kh->id)}}" type="button" class="btn btn-outline-danger">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
@@ -52,5 +59,8 @@
     @endforeach
     </tbody>
   </table>
+</div>
+</div>
+</div>
 </div>
 @endsection

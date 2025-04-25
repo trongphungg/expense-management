@@ -163,3 +163,22 @@ body {
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
   }
+  .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff; /* để không bị trong suốt khi đè */
+}
+/* file style.css hoặc app.css */
+.content-wrapper {
+    
+  padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding-top: 90px;
+  }
+}

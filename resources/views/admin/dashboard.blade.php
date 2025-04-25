@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="container mt-4 overflow-auto" style="max-height: 90vh; margin-bottom: 50px;">
+<div class="container mt-4 overflow-auto" style="max-height: 90vh;">
     <h1 style="padding-top: 25px">Danh sách thành viên</h1>
     <table class="table table-striped table-hover">
         <thead>
@@ -88,7 +88,7 @@
           </tr>
         </tbody>
     </table>
-    <div class="text-end mt-3">
+    <div class="text-end mt-3" style="padding-bottom: 100px">
       <a href="{{ route('tattoan') }}" class="btn btn-info">Tất toán</a>
   </div>
 </div>
