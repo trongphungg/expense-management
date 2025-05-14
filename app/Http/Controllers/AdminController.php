@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\detail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -93,6 +94,11 @@ class AdminController extends Controller
     }
 
     public function handleDeleteUser($id){
+        $hasDetail = DB::table('detail')->where('id_user', $id)->exists();
+        $hasExpense = DB::table('expense')->where('id_user', $id)->exists();
+        if ($hasDetail || $hasExpense) {
+            return redirect('/create')->with('error', 'Không thể xoá người dùng vì đã có chi tiêu.');
+        }
         $user = user::where('id',$id);
         $user->delete();
         return redirect('/create');
