@@ -8,6 +8,7 @@ use App\Models\expense;
 use App\Models\User;
 
 use App\Mail\ThongBaoMail;
+use App\Mail\MailAdmin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,9 +23,10 @@ class TotalController extends Controller
     }
 
     public function finish(){
-        $dskh = User::all();
+        $dskh = User::all()->keyBy('id');
         $tongchitieu=0;
         $soluongUser = User::count();
+        $dstiendong = [];
 
         $dsct = detail::all();
         $dscp = expense::all();
@@ -50,7 +52,10 @@ class TotalController extends Controller
 }
 
 // Bước 2: Gửi mail cho từng khách hàng
-    foreach ($dskh as $kh) {
+    $dstiendong = [];
+$mailData = [];
+
+foreach ($dskh as $kh) {
     $ctcn = $tongChiTieuTheoUser[$kh->id] ?? 0;
     $sotien = $ctcn - $tbtien;
     $name = $kh->name;
@@ -63,8 +68,40 @@ class TotalController extends Controller
         $flag = 0;
     }
 
-    Mail::to($kh->email)->send(new ThongBaoMail($name, $sotien, $flag,$ctcn,$tbtien));
+    $dstiendong[$kh->id] = $sotien;
+
+    // Lưu dữ liệu cần thiết để gửi mail sau này
+    $mailData[] = [
+        'name' => $name,
+        'email' => $kh->email,
+        'flag' => $flag,
+        'sotien' => $sotien,
+        'ctcn' => $ctcn,
+        'role' => $kh->role
+    ];
 }
+foreach ($mailData as $data) {
+    if ($data['role'] == 1) {
+        Mail::to($data['email'])->send(new MailAdmin(
+            $data['name'],
+            $data['sotien'],
+            $data['flag'],
+            $data['ctcn'],
+            $tbtien,
+            $dstiendong,
+            $dskh
+        ));
+    } else {
+        Mail::to($data['email'])->send(new ThongBaoMail(
+            $data['name'],
+            $data['sotien'],
+            $data['flag'],
+            $data['ctcn'],
+            $tbtien
+        ));
+    }
+}
+
 
     DB::table('detail')->truncate();
     return view('email.finish');
